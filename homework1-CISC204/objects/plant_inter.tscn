@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbf4m8xaqcnyt"]
+
+[ext_resource type="Texture2D" uid="uid://dscsxv216vdc4" path="res://art/pixil-plant.png" id="1_3f3k2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uffdc"]
+size = Vector2(67, 73)
+
+[node name="Plant_inter" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_3f3k2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_uffdc")

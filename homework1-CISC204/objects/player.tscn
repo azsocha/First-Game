@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://dktl3ygp1saap"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_laci8"]
+[ext_resource type="Texture2D" uid="uid://diubffhg2qahr" path="res://art/pixilart-frames (2)/pixil-frame-4.png" id="2_0kk16"]
+[ext_resource type="Texture2D" uid="uid://7ebjk3gjmkfo" path="res://art/pixilart-frames (2)/pixil-frame-5.png" id="3_7aqlj"]
+[ext_resource type="Texture2D" uid="uid://dai3gwirg7hnd" path="res://art/pixilart-frames (2)/pixil-frame-2.png" id="4_yh60f"]
+[ext_resource type="Texture2D" uid="uid://clfkbujjsh8hk" path="res://art/pixilart-frames (2)/pixil-frame-3.png" id="5_mxjns"]
+[ext_resource type="Texture2D" uid="uid://cl0nwirnh5ahu" path="res://art/pixilart-frames (2)/pixil-frame-6.png" id="6_mk0qc"]
+[ext_resource type="Texture2D" uid="uid://2wflsq32puim" path="res://art/pixilart-frames (2)/pixil-frame-7.png" id="7_ulycj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_psmcq"]
+load_path = "res://.godot/imported/pixil-frame-0.png-afa9f91f658f379ce0aedfcfbe1d063c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sd18y"]
+load_path = "res://.godot/imported/pixil-frame-1.png-f6529d5744740bd14e6db0a924af0aff.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hskcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0kk16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7aqlj")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yh60f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mxjns")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_psmcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_sd18y")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mk0qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ulycj")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jutgj"]
+size = Vector2(97, 83)
+
+[node name="Player" type="Area2D"]
+position = Vector2(66, 54)
+collision_mask = 0
+script = ExtResource("1_laci8")
+speed = 10000
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.5, 0)
+sprite_frames = SubResource("SpriteFrames_hskcc")
+animation = &"right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 9.5)
+shape = SubResource("RectangleShape2D_jutgj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

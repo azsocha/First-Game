@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgvx5hd81xdws"]
+
+[ext_resource type="Texture2D" uid="uid://dmm20jlrh3pa6" path="res://art/pixil-orageCat.png" id="1_2md8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxkf4"]
+size = Vector2(132, 92)
+
+[node name="Orange" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2md8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 14)
+shape = SubResource("RectangleShape2D_wxkf4")

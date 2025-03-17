@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo17irx4fq1r"]
+
+[ext_resource type="PackedScene" uid="uid://bg3lmluvfjxl1" path="res://objects/Player1.tscn" id="1_ery2i"]
+[ext_resource type="Script" path="res://main.gd" id="1_mxwwn"]
+[ext_resource type="PackedScene" uid="uid://dbf4m8xaqcnyt" path="res://objects/plant_inter.tscn" id="2_6oic3"]
+[ext_resource type="PackedScene" uid="uid://b7dsqp0vpauua" path="res://objects/wall.tscn" id="2_g6m8g"]
+[ext_resource type="Script" path="res://scripts/goal_1.gd" id="5_rgx8w"]
+[ext_resource type="Script" path="res://scripts/Disappear_wall.gd" id="5_uam15"]
+[ext_resource type="PackedScene" uid="uid://cgvx5hd81xdws" path="res://objects/orange.tscn" id="6_trs8j"]
+[ext_resource type="Script" path="res://scripts/goal_2.gd" id="8_3c7f3"]
+[ext_resource type="PackedScene" uid="uid://je5xsqidl0wp" path="res://objects/hud.tscn" id="9_sykum"]
+[ext_resource type="AudioStream" uid="uid://c0kvip1h3v3xf" path="res://art/Brandy1 (2).wav" id="10_8013c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyrnp"]
+size = Vector2(117, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mme6"]
+size = Vector2(109, 72)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_mxwwn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.82897e-06, 0.486643, 0.489194, 1)
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(88, 123)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Wall" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(276, 27)
+
+[node name="Wall2" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(181, 149)
+rotation = -1.5708
+
+[node name="Wall3" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(490, 27)
+
+[node name="Wall4" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(220, 613)
+
+[node name="Wall5" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(133, 480)
+rotation = -1.5708
+
+[node name="Wall6" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(707, 27)
+
+[node name="Wall7" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(870, 614)
+
+[node name="Wall8" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(652, 614)
+
+[node name="Wall9" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(436, 614)
+
+[node name="Wall10" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(1003, 534)
+rotation = 1.5708
+
+[node name="Wall11" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(857, 117)
+rotation = 1.5708
+
+[node name="Wall12" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(355, 335)
+rotation = 1.5708
+
+[node name="Wall13" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(439, 190)
+
+[node name="Wall14" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(620, 242)
+disable_mode = 1
+
+[node name="Wall15" parent="Environment" instance=ExtResource("2_g6m8g")]
+position = Vector2(627, 410)
+
+[node name="Plant_inter" parent="Environment" instance=ExtResource("2_6oic3")]
+position = Vector2(437, 277)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Goal1" type="Area2D" parent="."]
+position = Vector2(437, 293)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("5_rgx8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_eyrnp")
+
+[node name="Disappear_wall" parent="." instance=ExtResource("2_g6m8g")]
+position = Vector2(919, 321)
+rotation = 0.872665
+script = ExtResource("5_uam15")
+
+[node name="Orange" parent="." instance=ExtResource("6_trs8j")]
+position = Vector2(1055, 86)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Goal2" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_3c7f3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
+position = Vector2(1054.5, 99)
+shape = SubResource("RectangleShape2D_4mme6")
+
+[node name="Player1" parent="." instance=ExtResource("1_ery2i")]
+position = Vector2(91, 119)
+collision_layer = 5
+collision_mask = 5
+
+[node name="HUD" parent="." instance=ExtResource("9_sykum")]
+
+[node name="Meow" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("10_8013c")
+
+[connection signal="body_entered" from="Goal1" to="Goal1" method="_on_body_entered"]
+[connection signal="level_open" from="Goal1" to="Disappear_wall" method="disappear"]
+[connection signal="body_entered" from="Goal2" to="HUD" method="_on_goal_2_body_entered"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

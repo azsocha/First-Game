@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7dsqp0vpauua"]
+
+[ext_resource type="Texture2D" uid="uid://cn2k0qgwt37x4" path="res://art/pixil-bush.png" id="1_oxuwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p77h5"]
+size = Vector2(223, 54)
+
+[node name="Wall" type="StaticBody2D"]
+position = Vector2(-1, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_p77h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_oxuwi")

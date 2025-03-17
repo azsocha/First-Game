@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0kvip1h3v3xf"
+path="res://.godot/imported/Brandy1 (2).wav-f5a8b738c20372550142b4f119baab79.sample"
+
+[deps]
+
+source_file="res://art/Brandy1 (2).wav"
+dest_files=["res://.godot/imported/Brandy1 (2).wav-f5a8b738c20372550142b4f119baab79.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
